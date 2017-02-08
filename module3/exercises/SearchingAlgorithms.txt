@@ -1,0 +1,67 @@
+Exercise: Searching Algorithms
+Question 1:
+
+Given the following array:
+
+{-2, 5, 20, 4, 8, 17}
+
+How many items would need to be looked at when running linear search on the above array for the following items:
+
+Linear search for ‘5’: 2
+
+Linear search for ‘8’: 5
+
+Linear search for ’20’: 3
+
+Question 2:
+
+Given the following array:
+
+{0, -6, 20, 15, 1, 2, 3}
+
+Would it be more appropriate to use linear search or binary search? Why?
+
+#####Linear search since the array is not sorted
+
+Question 3:
+
+Given the following array:
+
+{4, 7, 13, 18, 21, 42}
+{4, 7, 13, [18], 21, 42}
+{18, [21], 42} final iteration
+
+carry out the process of using binary search for the number ’21'. For each iteration of binary search, show:
+
+which elements of the array are between the “start” and “end” elements
+which element is the “middle” element; highlight it by putting it between square brackets (i.e., put it between [])
+next to the final iteration, write “final iteration"
+For example, let's say we did this question with the following array:
+
+{-6, 0, 1, 2, 3, 15, 20}
+
+searching for the number '0'.
+
+A correct answer would look like this:
+
+{-6, 0, 1, [2], 3, 15, 20}
+
+{-6, [0], 1} final iteration
+
+Question 4:
+
+Say we have n elements and know that they are not yet sorted.
+
+What is the time complexity of sorting the array and then performing m search operations with binary search? You may use any sorting algorithm you want, just say what it is, and what it’s time complexity is.
+
+######### bubble sort -> n*n + m*logn
+
+Question 5:
+
+For an unsorted array of 256 elements in which we would need to search for 8 elements, would it be faster to use linear search or binary search?
+
+There is no need to actually sort the array, or show the sorted array. Feel free to use the time complexity of whichever sorting algorithm you want, and feel free to use a calculator!
+
+
+bubble sort + binary search -> n*n + 8 * log(n) = 65600
+linear search -> 8 * n = 2048

@@ -1,0 +1,25 @@
+#top
+{
+    background-color: yellow;
+}
+
+#top h1
+{
+    text-align: center;
+}
+
+#middle
+{
+    background-color: green;
+}
+
+#middle a
+{
+    font-size: xx-large;
+}
+
+#bottom
+{
+    color: green;
+    background-color: yellow;
+}

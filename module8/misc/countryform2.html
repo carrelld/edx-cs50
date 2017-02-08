@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Country Selector</title>
+        <script type="text/javascript" src=""></script>
+    </head>
+    <body>
+        <form id="countryForm">
+            <label>Select a country</label>
+            <select name="country">
+                <option value="None">Pick One</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="Mexico">Mexico</option>
+            </select>
+            <br />
+            <br />
+            <input id="capital" type="text">
+            <br />
+            <br />
+            <input type="submit" value="Submit"/>
+        </form>
+        
+        <script>
+            $.(document).ready();
+        </script>
+        
+        <script>
+            var form = document.getElementById('countryForm');
+            form.onsubmit = function() {
+                var capitals = {USA: "Washington D.C.", Canada: "Ottowa", Mexico: "Mexico City"};
+                if(form.country.value == 'None')
+                {
+                    alert('You must select a country!');
+                }
+                else if(form.capital.value == '')
+                {
+                    form.appendChild(document.createTextNode("You must enter a capital!"));
+                }
+                else if (form.capital.value == capitals[form.country.value])
+                {
+                    alert('You are correct!');
+                }
+                else
+                {
+                    alert('You are incorrect!')
+                }
+                return false;
+            }
+        </script>
+    </body>
+</html>

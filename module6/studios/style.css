@@ -1,0 +1,17 @@
+
+#top
+{
+    margin: 5px;
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 50px 50px 50px 50px;
+    border-radius: 100%;
+}
+.form-container
+{
+    margin: 5px;
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    padding: 30px 10px 10px 20px;
+}

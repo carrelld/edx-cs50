@@ -1,0 +1,20 @@
+
+0.  JPEG: 16777216 (256^3), BMP: 16777216, PNG 281474976710656, GIF 256
+1.  GIF supports animation
+2.  Lossy changes some of the pixels to significantly reduce the size of the file, but results in lower image quality
+3.  JPEG is lossy, but has a lossless standard that is not widely implemented
+4.  Changes the name of the file and lists the sectors as free
+5.  Overwrite each bit with random bits
+6.  stdint.h is a standard C library that allows strict definition of int data type sizes. Useful for embedded programming
+7.  To define specific ranges that are allowed; Portability and clarity
+8.  BYTE 8; DWORD 32; LONG 32; WORD 16;
+9.  bmp file header magic number: 0x424d or "BM" in ascii, but may not be represented that way in binary due to "endianess" of the cpu
+10. bisize is the number of bytes required by the structure so you know what the offsets are for the start of the image; bfsize is the bmp file size
+11. It describes the way the pixels are indexed, negative means the origin is in the bottom left of the image
+12. biBitCount
+13. If for some reason the output file couldn't be created (lack of space or other unknown reason)
+14. We want to parse through each element in the data structure one at a time. the combination of sizeof() and 1 allow that. 1 is how many elements of size sizeof should fread return
+15. Because 3 pixels x 3 bytes each is 9. 9 is not a multiple of 4 which is required by the BMP specification
+16. fseek() moves the cursor (file position indicator) a certain number of bytes
+17. SEEK_CUR is a pointer to the current position in the file. A required argument in the fseek() function to determine from where to offset
+18. The infamous Mr. Astley

@@ -1,0 +1,79 @@
+#!/usr/bin/env php
+<?php
+
+    // Import 
+    require("../includes/config.php");
+   
+    // Import usage of query and connection to database
+    //require("../vendor/library50-php-5/CS50/CS50.php");
+    //CS50::init(__DIR__ . "/../config.json");
+   
+    // error check
+    if (count($argv) != 2)
+    {
+        exit("Usage: import [file]\n");
+    }
+    
+    // File I/O error checking
+    $fileLoc = $argv[1];
+    
+    if (!file_exists($fileLoc))
+    {
+        exit("Error: File does not exist\n");
+    }
+    if (!is_readable($fileLoc))
+    {
+        exit("Error: Cannot read the file. Check the permissions\n");
+    }
+    
+    // open file
+    if (($fp = fopen($fileLoc, "r")) === false)
+    {
+        exit("ERROR: Unexpected error openning the file");
+    }
+    
+    // prepare query variable list
+    $varArray = array("country_code", "postal_code", "place_name", "admin_name1", "admin_code1", 
+                    "admin_name2", "admin_code2", "admin_name3", "admin_code3",
+                    "latitude", "longitude", "accuracy");
+
+    // Create strings for variables and values for each row for INSERT
+    while (($line = fgetcsv($fp, 1000, "\t")) !== false)
+    {
+        $varString = "";
+        $valueString = "";
+        for ($i = 0, $n = count($line); $i < $n; $i++)
+        {
+            $value = $line[$i];
+            
+            // Skip empty values
+            if (empty($value))
+            {
+                continue;
+            }
+            
+            // Only skip the first time so string doesn't start with a comma-space
+            if (strlen($varString)) 
+            {
+                $varString = $varString . ", ";
+                $valueString = $valueString . ", ";
+            }
+            
+            // Append vars and values to respective strings
+            $varString = $varString . $varArray[$i];
+            $valueString = $valueString . "'{$value}'";
+            
+        }
+        
+        // WHY DOESN"T THIS WORK!!!????!?!?!
+        //CS50::query("INSERT INTO places (?) VALUES (?)", $varString, $valueString);
+        //printf("INSERT INTO places (%s) VALUES (%s)\n\n", $varString, $valueString);
+        
+        // This does work. OK as Long as strings aren't public-facing
+        CS50::query("INSERT INTO places ({$varString}) VALUES ({$valueString})");
+    }
+    
+    // cleanup
+    fclose($fp);
+    
+?>
